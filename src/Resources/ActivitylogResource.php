@@ -218,7 +218,7 @@ class ActivitylogResource extends Resource
 
     public static function getCauserNameColumnCompoment(): Column
     {
-        return TextColumn::make('causer.name')
+        return TextColumn::make('causer.username')
             ->label(__('activitylog::tables.columns.causer.label'))
             ->getStateUsing(function (Model $record) {
 
@@ -226,7 +226,7 @@ class ActivitylogResource extends Resource
                     return new HtmlString('&mdash;');
                 }
 
-                return $record->causer->name;
+                return $record->causer->username;
             })
             ->searchable();
     }
